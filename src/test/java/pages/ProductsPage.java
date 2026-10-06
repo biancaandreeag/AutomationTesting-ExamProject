@@ -35,8 +35,9 @@ public class ProductsPage extends BasePage {
         elementMethods.clickElement(addButton);
     }
 
+    // fereastra apare abia dupa ce serverul raspunde la "Add to cart", deci astept sa fie vizibila
     public String getAddedMessage() {
-        return addedMessage.getText();
+        return elementMethods.getText(addedMessage);
     }
 
     public void viewCart() {
