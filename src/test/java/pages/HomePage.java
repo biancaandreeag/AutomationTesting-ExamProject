@@ -14,6 +14,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@href='/login']")
     private WebElement signupLoginLink;
 
+    @FindBy(xpath = "//a[@href='/products']")
+    private WebElement productsLink;
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -27,5 +30,9 @@ public class HomePage extends BasePage {
 
     public void goToSignupLogin() {
         elementMethods.clickElement(signupLoginLink);
+    }
+
+    public void goToProducts() {
+        elementMethods.clickElement(productsLink);
     }
 }

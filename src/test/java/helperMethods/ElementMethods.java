@@ -11,10 +11,12 @@ public class ElementMethods {
 
     private WebDriver driver;
     private WebDriverWait wait;
+    private JavaScriptMethods javaScriptMethods;
 
     public ElementMethods(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.javaScriptMethods = new JavaScriptMethods(driver);
     }
 
     public void waitForVisibility(WebElement element) {
@@ -23,6 +25,7 @@ public class ElementMethods {
 
     public void clickElement(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
+        javaScriptMethods.scrollToElement(element);
         element.click();
     }
 
