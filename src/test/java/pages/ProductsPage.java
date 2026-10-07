@@ -5,12 +5,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsPage extends BasePage {
 
     @FindBy(css = ".features_items .productinfo")
     private List<WebElement> products;
+
+    @FindBy(id = "search_product")
+    private WebElement searchField;
+
+    @FindBy(id = "submit_search")
+    private WebElement searchButton;
+
+    @FindBy(css = ".features_items h2.title")
+    private WebElement productsTitle;
 
     @FindBy(css = "#cartModal .modal-body p")
     private WebElement addedMessage;
@@ -42,5 +52,23 @@ public class ProductsPage extends BasePage {
 
     public void viewCart() {
         elementMethods.clickElement(viewCartLink);
+    }
+
+    public void searchProduct(String term) {
+        elementMethods.fillElement(searchField, term);
+        elementMethods.clickElement(searchButton);
+    }
+
+    public String getProductsTitle() {
+        return elementMethods.getText(productsTitle);
+    }
+
+    // in HTML unele nume au spatii duble ("Sleeveless  Dress"), asa ca le reduc la unul singur
+    public List<String> getProductNames() {
+        List<String> names = new ArrayList<>();
+        for (WebElement product : products) {
+            names.add(product.findElement(By.tagName("p")).getText().replaceAll("\\s+", " ").trim());
+        }
+        return names;
     }
 }
