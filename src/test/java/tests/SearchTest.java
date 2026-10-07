@@ -1,7 +1,9 @@
 package tests;
 
+import com.aventstack.chaintest.plugins.ChainTestListener;
 import objectData.SearchObject;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.ProductsPage;
@@ -10,6 +12,7 @@ import xmlReader.XmlDataLoader;
 
 import java.util.List;
 
+@Listeners(ChainTestListener.class)
 public class SearchTest extends ShareData {
 
     @Test

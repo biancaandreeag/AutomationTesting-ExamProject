@@ -1,5 +1,6 @@
 package pages;
 
+import logger.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,14 +26,17 @@ public class HomePage extends BasePage {
     public void acceptCookiesIfShown() {
         if (!consentButtons.isEmpty()) {
             elementMethods.clickElement(consentButtons.get(0));
+            LoggerUtility.infoTest("Cookie consent accepted");
         }
     }
 
     public void goToSignupLogin() {
         elementMethods.clickElement(signupLoginLink);
+        LoggerUtility.infoTest("Opened Signup / Login page");
     }
 
     public void goToProducts() {
         elementMethods.clickElement(productsLink);
+        LoggerUtility.infoTest("Opened Products page");
     }
 }

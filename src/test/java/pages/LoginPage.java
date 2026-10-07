@@ -1,5 +1,6 @@
 package pages;
 
+import logger.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -39,6 +40,7 @@ public class LoginPage extends BasePage {
         elementMethods.fillElement(emailField, email);
         elementMethods.fillElement(passwordField, password);
         elementMethods.clickElement(loginButton);
+        LoggerUtility.infoTest("Tried to log in with " + email);
     }
 
     public String getLoginErrorMessage() {
@@ -49,6 +51,7 @@ public class LoginPage extends BasePage {
         elementMethods.fillElement(signupNameField, name);
         elementMethods.fillElement(signupEmailField, email);
         elementMethods.clickElement(signupButton);
+        LoggerUtility.infoTest("Tried to sign up with " + email);
     }
 
     public String getSignupErrorMessage() {

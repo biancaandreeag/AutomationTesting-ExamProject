@@ -1,7 +1,9 @@
 package tests;
 
+import com.aventstack.chaintest.plugins.ChainTestListener;
 import objectData.SignupObject;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
@@ -10,6 +12,7 @@ import xmlReader.XmlDataLoader;
 
 import java.util.Map;
 
+@Listeners(ChainTestListener.class)
 public class SignupNegativeTest extends ShareData {
 
     private Map<String, SignupObject> signupData = XmlDataLoader.loadData("src/test/resources/signupData.xml", SignupObject.class);

@@ -1,5 +1,6 @@
 package pages;
 
+import logger.LoggerUtility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -43,6 +44,7 @@ public class ProductsPage extends BasePage {
     public void addProductToCart(int index) {
         WebElement addButton = products.get(index).findElement(By.cssSelector("a.add-to-cart"));
         elementMethods.clickElement(addButton);
+        LoggerUtility.infoTest("Added product " + index + " to cart");
     }
 
     // fereastra apare abia dupa ce serverul raspunde la "Add to cart", deci astept sa fie vizibila
@@ -52,11 +54,13 @@ public class ProductsPage extends BasePage {
 
     public void viewCart() {
         elementMethods.clickElement(viewCartLink);
+        LoggerUtility.infoTest("Opened cart from the confirmation window");
     }
 
     public void searchProduct(String term) {
         elementMethods.fillElement(searchField, term);
         elementMethods.clickElement(searchButton);
+        LoggerUtility.infoTest("Searched for " + term);
     }
 
     public String getProductsTitle() {

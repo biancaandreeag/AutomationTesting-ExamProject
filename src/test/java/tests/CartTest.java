@@ -1,12 +1,15 @@
 package tests;
 
+import com.aventstack.chaintest.plugins.ChainTestListener;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.HomePage;
 import pages.ProductsPage;
 import sharedData.ShareData;
 
+@Listeners(ChainTestListener.class)
 public class CartTest extends ShareData {
 
     // tot fluxul intr-un singur test: intre teste diferite cosul se goleste (sesiune noua)

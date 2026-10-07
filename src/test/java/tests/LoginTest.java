@@ -1,13 +1,16 @@
 package tests;
 
+import com.aventstack.chaintest.plugins.ChainTestListener;
 import objectData.LoginObject;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 import sharedData.ShareData;
 import xmlReader.XmlDataLoader;
 
+@Listeners(ChainTestListener.class)
 public class LoginTest extends ShareData {
 
     @Test
