@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataTests>
+    <dataSet_1>
+        <name>Bianca Test</name>
+        <email>bianca.examproject@example.com</email>
+        <expectedMessage>Email Address already exist!</expectedMessage>
+    </dataSet_1>
+    <dataSet_2>
+        <name>Bianca Test</name>
+        <email>bianca.examproject</email>
+    </dataSet_2>
+</dataTests>

@@ -19,6 +19,18 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//form[@action='/login']//p")
     private WebElement loginErrorMessage;
 
+    @FindBy(css = "input[data-qa='signup-name']")
+    private WebElement signupNameField;
+
+    @FindBy(css = "input[data-qa='signup-email']")
+    private WebElement signupEmailField;
+
+    @FindBy(css = "button[data-qa='signup-button']")
+    private WebElement signupButton;
+
+    @FindBy(xpath = "//form[@action='/signup']//p")
+    private WebElement signupErrorMessage;
+
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -31,5 +43,24 @@ public class LoginPage extends BasePage {
 
     public String getLoginErrorMessage() {
         return elementMethods.getText(loginErrorMessage);
+    }
+
+    public void signup(String name, String email) {
+        elementMethods.fillElement(signupNameField, name);
+        elementMethods.fillElement(signupEmailField, email);
+        elementMethods.clickElement(signupButton);
+    }
+
+    public String getSignupErrorMessage() {
+        return elementMethods.getText(signupErrorMessage);
+    }
+
+    // un email fara @ e oprit de browser inainte sa plece formularul; mesajul e in atributul validationMessage
+    public String getSignupEmailValidationMessage() {
+        return signupEmailField.getDomProperty("validationMessage");
+    }
+
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
     }
 }
