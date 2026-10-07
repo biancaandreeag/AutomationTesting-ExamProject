@@ -1,10 +1,12 @@
 package tests;
 
+import objectData.SearchObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.ProductsPage;
 import sharedData.ShareData;
+import xmlReader.XmlDataLoader;
 
 import java.util.List;
 
@@ -12,14 +14,13 @@ public class SearchTest extends ShareData {
 
     @Test
     public void searchProducts() {
-        String searchTerm = "dress";
-        String expectedProduct = "Sleeveless Dress";
+        SearchObject data = XmlDataLoader.loadData("src/test/resources/searchData.xml", SearchObject.class).get("dataSet_1");
 
         HomePage homePage = new HomePage(getDriver());
         homePage.goToProducts();
 
         ProductsPage productsPage = new ProductsPage(getDriver());
-        productsPage.searchProduct(searchTerm);
+        productsPage.searchProduct(data.getSearchTerm());
 
         Assert.assertEquals(productsPage.getProductsTitle(), "SEARCHED PRODUCTS");
 
@@ -27,6 +28,6 @@ public class SearchTest extends ShareData {
         // produse din categoria Dress fara cuvantul in nume, deci verific un produs cunoscut
         List<String> names = productsPage.getProductNames();
         Assert.assertFalse(names.isEmpty(), "Cautarea nu a intors niciun produs");
-        Assert.assertTrue(names.contains(expectedProduct), "Lipseste din rezultate: " + expectedProduct + ". Gasite: " + names);
+        Assert.assertTrue(names.contains(data.getExpectedProduct()), "Lipseste din rezultate: " + data.getExpectedProduct() + ". Gasite: " + names);
     }
 }

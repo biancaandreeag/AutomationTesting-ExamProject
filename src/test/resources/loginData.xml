@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataTests>
+    <dataSet_1>
+        <email>nu.exista@example.com</email>
+        <password>ParolaGresita1</password>
+        <expectedMessage>Your email or password is incorrect!</expectedMessage>
+    </dataSet_1>
+</dataTests>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataTests>
+    <dataSet_1>
+        <searchTerm>dress</searchTerm>
+        <expectedProduct>Sleeveless Dress</expectedProduct>
+    </dataSet_1>
+    <dataSet_2>
+        <searchTerm>jeans</searchTerm>
+        <expectedProduct>Soft Stretch Jeans</expectedProduct>
+    </dataSet_2>
+</dataTests>
