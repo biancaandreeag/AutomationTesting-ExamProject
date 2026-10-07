@@ -1,10 +1,10 @@
 package sharedData;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.HomePage;
+import sharedData.browser.BrowserFactory;
 
 // fiecare test porneste cu un browser nou, deja pe site si fara fereastra de cookie-uri
 public class ShareData {
@@ -13,8 +13,7 @@ public class ShareData {
 
     @BeforeMethod
     public void prepareBrowser() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        driver = BrowserFactory.getDriver();
         driver.get("https://automationexercise.com");
         new HomePage(driver).acceptCookiesIfShown();
     }
