@@ -11,9 +11,20 @@ public class ChromeService implements BrowserService {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         options.addArguments(AdBlocking.HOST_RULES);
+        if (isCiRun()) {
+            options.addArguments("--headless=new");
+            options.addArguments("--window-size=1920,1080");
+            options.addArguments("--disable-dev-shm-usage");
+        }
         WebDriver driver = new ChromeDriver(options);
-        // pe Mac --start-maximized nu are efect
-        driver.manage().window().maximize();
+        // pe Mac --start-maximized nu are efect; in headless maximize() ar micsora fereastra
+        if (!isCiRun()) {
+            driver.manage().window().maximize();
+        }
         return driver;
+    }
+
+    private boolean isCiRun() {
+        return Boolean.parseBoolean(System.getProperty("CICD"));
     }
 }

@@ -1,0 +1,66 @@
+name: Automation tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      suite:
+        description: 'Suita de teste'
+        required: true
+        default: smokeSuite
+        type: choice
+        options:
+          - smokeSuite
+          - regressionSuite
+          - allTests
+      browser:
+        description: 'Browserul'
+        required: true
+        default: chrome
+        type: choice
+        options:
+          - chrome
+          - edge
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    # MySQL pentru AccountTest, cu aceleasi setari ca local (root fara parola)
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '26'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Create database
+        run: mysql -h 127.0.0.1 -u root < src/test/resources/createTables.sql
+
+      - name: Run tests
+        run: mvn clean test -DCICD=true -Dbrowser=${{ github.event.inputs.browser }} -Dsuite=suites/${{ github.event.inputs.suite }}.xml
+
+      # raportul si logurile se pot descarca din pagina rularii, chiar daca au picat teste
+      - name: Upload report and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: |
+            target/chaintest
+            target/logs
