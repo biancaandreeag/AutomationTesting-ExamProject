@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataTests>
+    <dataSet_1>
+        <name>Bianca Test</name>
+        <password>Parola123!</password>
+        <day>10</day>
+        <month>May</month>
+        <year>1998</year>
+        <firstName>Bianca</firstName>
+        <lastName>Test</lastName>
+        <address>Strada Exemplu 10</address>
+        <country>Canada</country>
+        <state>Ontario</state>
+        <city>Toronto</city>
+        <zipcode>12345</zipcode>
+        <mobileNumber>0712345678</mobileNumber>
+    </dataSet_1>
+</dataTests>
