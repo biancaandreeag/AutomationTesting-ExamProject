@@ -10,6 +10,7 @@ public class ChromeService implements BrowserService {
     public WebDriver openBrowser() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
+        options.addArguments(AdBlocking.HOST_RULES);
         WebDriver driver = new ChromeDriver(options);
         // pe Mac --start-maximized nu are efect
         driver.manage().window().maximize();

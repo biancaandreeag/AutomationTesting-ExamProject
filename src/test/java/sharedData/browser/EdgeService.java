@@ -10,6 +10,7 @@ public class EdgeService implements BrowserService {
     public WebDriver openBrowser() {
         EdgeOptions options = new EdgeOptions();
         options.addArguments("--start-maximized");
+        options.addArguments(AdBlocking.HOST_RULES);
         WebDriver driver = new EdgeDriver(options);
         driver.manage().window().maximize();
         return driver;
