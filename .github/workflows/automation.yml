@@ -11,6 +11,7 @@ on:
         options:
           - smokeSuite
           - regressionSuite
+          - apiSuite
           - allTests
       browser:
         description: 'Browserul'
