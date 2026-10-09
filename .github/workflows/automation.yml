@@ -26,20 +26,6 @@ jobs:
   tests:
     runs-on: ubuntu-latest
 
-    # MySQL pentru AccountTest, cu aceleasi setari ca local (root fara parola)
-    services:
-      mysql:
-        image: mysql:8.4
-        env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
-
     steps:
       - uses: actions/checkout@v5
 
@@ -50,8 +36,13 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Create database
-        run: mysql -h 127.0.0.1 -u root < src/test/resources/createTables.sql
+      # MySQL e deja instalat pe masina GitHub (root / root); il pornesc si las root fara parola, ca local
+      # (un service cu imaginea mysql din Docker Hub pica uneori din cauza limitei de descarcari)
+      - name: Start MySQL and create database
+        run: |
+          sudo systemctl start mysql
+          mysql -u root -proot -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '';"
+          mysql -u root < src/test/resources/createTables.sql
 
       - name: Run tests
         run: mvn clean test -DCICD=true -Dbrowser=${{ github.event.inputs.browser }} -Dsuite=suites/${{ github.event.inputs.suite }}.xml
@@ -59,7 +50,7 @@ jobs:
       # raportul si logurile se pot descarca din pagina rularii, chiar daca au picat teste
       - name: Upload report and logs
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: test-report
           path: |
