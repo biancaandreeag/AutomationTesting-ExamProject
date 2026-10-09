@@ -1,6 +1,7 @@
 package sharedData;
 
 import com.aventstack.chaintest.plugins.ChainTestListener;
+import configUtility.SiteUrls;
 import logger.LoggerUtility;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -26,7 +27,7 @@ public class ShareData {
         LoggerUtility.startTestCase(testName);
 
         driver = BrowserFactory.getDriver();
-        driver.get("https://automationexercise.com");
+        driver.get(SiteUrls.BASE_URL);
         new HomePage(driver).acceptCookiesIfShown();
         LoggerUtility.infoTest("Browser opened on automationexercise.com");
     }

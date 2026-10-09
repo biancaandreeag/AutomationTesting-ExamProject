@@ -41,10 +41,10 @@ jobs:
           --health-retries=5
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: '26'
           distribution: 'temurin'
@@ -59,7 +59,7 @@ jobs:
       # raportul si logurile se pot descarca din pagina rularii, chiar daca au picat teste
       - name: Upload report and logs
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: test-report
           path: |

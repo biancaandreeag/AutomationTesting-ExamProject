@@ -2,6 +2,7 @@ package tests.api;
 
 import apiObjects.ProductsResponse;
 import com.aventstack.chaintest.plugins.ChainTestListener;
+import configUtility.SiteUrls;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -24,7 +25,7 @@ public class ProductsApiTest {
     public void setUp(Method method) {
         testName = getClass().getSimpleName() + "_" + method.getName();
         LoggerUtility.startTestCase(testName);
-        RestAssured.baseURI = "https://automationexercise.com/api";
+        RestAssured.baseURI = SiteUrls.API_URL;
     }
 
     @AfterMethod
