@@ -16,4 +16,9 @@ public class JavaScriptMethods {
     public void scrollToElement(WebElement element) {
         js.executeScript("arguments[0].scrollIntoView({block: 'center', behavior: 'instant'});", element);
     }
+
+    // apasa elementul direct din pagina, chiar daca peste el e altceva (ex. o reclama)
+    public void clickWithJavaScript(WebElement element) {
+        js.executeScript("arguments[0].click();", element);
+    }
 }
