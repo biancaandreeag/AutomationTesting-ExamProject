@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+// actiunile de baza pe elemente (click, scris, citit text, select), toate cu asteptare inainte:
+// asa nu dau click si nu scriu intr-un element care inca nu s-a incarcat
 public class ElementMethods {
 
     private WebDriver driver;
@@ -18,6 +20,7 @@ public class ElementMethods {
 
     public ElementMethods(WebDriver driver) {
         this.driver = driver;
+        // daca elementul nu e gata in 10 secunde, testul pica cu TimeoutException
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         this.javaScriptMethods = new JavaScriptMethods(driver);
     }
@@ -39,6 +42,7 @@ public class ElementMethods {
         }
     }
 
+    // sterg intai ce era in camp, altfel textul nou s-ar lipi de cel vechi
     public void fillElement(WebElement element, String text) {
         waitForVisibility(element);
         element.clear();
@@ -50,6 +54,7 @@ public class ElementMethods {
         return element.getText();
     }
 
+    // pentru dropdown-urile <select> (zi, luna, an, tara): aleg dupa textul care se vede
     public void selectByText(WebElement element, String text) {
         waitForVisibility(element);
         new Select(element).selectByVisibleText(text);

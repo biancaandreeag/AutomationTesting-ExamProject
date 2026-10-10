@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.io.File;
 
+// pagina Contact Us: formularul cu nume, email, subiect, mesaj si fisier atasat
 public class ContactUsPage extends BasePage {
 
     @FindBy(css = "input[data-qa='name']")
@@ -31,6 +32,7 @@ public class ContactUsPage extends BasePage {
     @FindBy(css = "#contact-page .status.alert-success")
     private WebElement successMessage;
 
+    // dupa OK alerta dispare, asa ca ii pastrez textul aici pentru assert
     private String alertText;
 
     public ContactUsPage(WebDriver driver) {

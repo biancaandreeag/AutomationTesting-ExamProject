@@ -5,6 +5,7 @@ import org.w3c.dom.Document;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
+// citeste din dbConfig.xml datele de conectare la MySQL (port, baza, user); parola vine separat
 public class ConfigReader {
 
     public static DatabaseConfig readDatabaseConfig(String filePath) {
@@ -20,6 +21,7 @@ public class ConfigReader {
         }
     }
 
+    // textul din tag, ex. <port>3306</port> -> "3306"
     private static String getValue(Document document, String tag) {
         return document.getElementsByTagName(tag).item(0).getTextContent().trim();
     }

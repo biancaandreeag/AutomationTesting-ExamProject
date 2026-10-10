@@ -1,5 +1,6 @@
 package configUtility;
 
+// doar tine datele de conectare citite de ConfigReader, ca sa ajunga la DBConnection
 public class DatabaseConfig {
 
     private String port;

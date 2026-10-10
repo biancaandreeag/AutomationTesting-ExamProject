@@ -2,6 +2,7 @@ package sharedData.browser;
 
 import org.openqa.selenium.WebDriver;
 
+// testele cer doar "un browser"; aici se decide care anume, dupa proprietatea browser
 public class BrowserFactory {
 
     // browserul vine din pom.xml sau din linia de comanda: mvn test -Dbrowser=edge

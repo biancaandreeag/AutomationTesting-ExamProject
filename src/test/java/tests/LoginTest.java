@@ -13,6 +13,7 @@ import xmlReader.XmlDataLoader;
 @Listeners(ChainTestListener.class)
 public class LoginTest extends ShareData {
 
+    // login cu un cont care nu exista -> site-ul trebuie sa arate mesajul de eroare (test negativ)
     @Test
     public void loginWithWrongCredentials() {
         LoginObject data = XmlDataLoader.loadData("src/test/resources/loginData.xml", LoginObject.class).get("dataSet_1");

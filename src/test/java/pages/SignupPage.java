@@ -55,6 +55,7 @@ public class SignupPage extends BasePage {
         super(driver);
     }
 
+    // partea de sus a formularului: titlu, parola, data nasterii
     public void fillAccountInformation(AccountObject data) {
         elementMethods.clickElement(mrsTitle);
         elementMethods.fillElement(passwordField, data.getPassword());
@@ -64,6 +65,7 @@ public class SignupPage extends BasePage {
         LoggerUtility.infoTest("Filled account information");
     }
 
+    // partea de jos: numele si adresa (apar apoi la checkout ca adresa de livrare)
     public void fillAddressInformation(AccountObject data) {
         elementMethods.fillElement(firstNameField, data.getFirstName());
         elementMethods.fillElement(lastNameField, data.getLastName());

@@ -13,6 +13,7 @@ import xmlReader.XmlDataLoader;
 import java.util.Map;
 
 @Listeners(ChainTestListener.class)
+// doua teste negative pe inregistrare, cu datele din signupData.xml
 public class SignupNegativeTest extends ShareData {
 
     private Map<String, SignupObject> signupData = XmlDataLoader.loadData("src/test/resources/signupData.xml", SignupObject.class);
@@ -29,6 +30,7 @@ public class SignupNegativeTest extends ShareData {
         Assert.assertEquals(loginPage.getSignupErrorMessage(), data.getExpectedMessage(), "Mesaj gresit pentru un email deja folosit");
     }
 
+    // email fara @: browserul opreste formularul, deci verific mesajul browserului si ca am ramas pe /login
     @Test
     public void signupWithInvalidEmail() {
         SignupObject data = signupData.get("dataSet_2");

@@ -1,5 +1,6 @@
 package objectData;
 
+// datele din checkoutData.xml; XmlDataLoader le completeaza, deci numele campurilor = numele tag-urilor
 public class CheckoutObject {
 
     private String comment;

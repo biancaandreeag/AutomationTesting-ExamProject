@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+// pagina Signup / Login: in stanga login-ul, in dreapta primul pas al inregistrarii (nume + email)
 public class LoginPage extends BasePage {
 
     // pe pagina sunt doua formulare (login si signup), data-qa le deosebeste
@@ -63,6 +64,7 @@ public class LoginPage extends BasePage {
         return signupEmailField.getDomProperty("validationMessage");
     }
 
+    // ca sa verific ca formularul nu a plecat (am ramas pe /login)
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }

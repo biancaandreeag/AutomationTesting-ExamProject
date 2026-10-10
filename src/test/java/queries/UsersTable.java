@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+// query-urile pe tabela users din exam_database (tabela se creeaza cu createTables.sql)
+// synchronized pe metode: in paralel, testele nu folosesc conexiunea in acelasi timp
 public class UsersTable {
 
     private Connection connection = DBConnection.getInstance().getConnection();
@@ -18,6 +20,7 @@ public class UsersTable {
         execute("DELETE FROM users WHERE email = ?", email);
     }
 
+    // intoarce null daca nu exista niciun rand cu emailul dat
     public synchronized String getNameByEmail(String email) {
         try (PreparedStatement statement = connection.prepareStatement("SELECT name FROM users WHERE email = ?")) {
             statement.setString(1, email);

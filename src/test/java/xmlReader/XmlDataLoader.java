@@ -22,6 +22,7 @@ public class XmlDataLoader {
             NodeList sets = document.getDocumentElement().getChildNodes();
 
             for (int i = 0; i < sets.getLength(); i++) {
+                // sar peste spatiile si randurile goale dintre tag-uri
                 if (sets.item(i).getNodeType() != Node.ELEMENT_NODE) {
                     continue;
                 }
@@ -34,6 +35,7 @@ public class XmlDataLoader {
                         continue;
                     }
                     Element value = (Element) values.item(j);
+                    // reflection: caut in clasa campul cu numele tag-ului si ii pun valoarea, chiar daca e private
                     Field field = clazz.getDeclaredField(value.getTagName());
                     field.setAccessible(true);
                     field.set(object, value.getTextContent().trim());

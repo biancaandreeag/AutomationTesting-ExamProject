@@ -2,6 +2,8 @@ package apiObjects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+// un produs asa cum vine din API; iau doar campurile de care am nevoie,
+// restul (ex. category) sunt ignorate prin @JsonIgnoreProperties
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
 

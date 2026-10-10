@@ -15,7 +15,8 @@ import sharedData.browser.BrowserFactory;
 
 import java.lang.reflect.Method;
 
-// fiecare test porneste cu un browser nou, deja pe site si fara fereastra de cookie-uri
+// fiecare test porneste cu un browser nou, deja pe site si fara fereastra de cookie-uri;
+// toate clasele de test extind ShareData, ca sa nu repet asta in fiecare test
 public class ShareData {
 
     private WebDriver driver;
@@ -23,6 +24,7 @@ public class ShareData {
 
     @BeforeMethod
     public void prepareBrowser(Method method) {
+        // numele logului: Clasa_metoda (ex. CartTest_addProductToCart)
         testName = getClass().getSimpleName() + "_" + method.getName();
         LoggerUtility.startTestCase(testName);
 
@@ -45,11 +47,13 @@ public class ShareData {
         LoggerUtility.endTestCase(testName);
     }
 
+    // o singura data, dupa toate testele
     @AfterSuite
     public void mergeLogs() {
         LoggerUtility.mergeTestLogs();
     }
 
+    // driverul e private; testele il iau doar prin metoda asta
     public WebDriver getDriver() {
         return driver;
     }

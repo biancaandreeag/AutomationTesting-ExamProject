@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+// pagina cosului (View Cart): randurile din tabel, numele, pretul si butonul de checkout
 public class CartPage extends BasePage {
 
     @FindBy(css = "#cart_info_table tbody tr")
@@ -29,6 +30,7 @@ public class CartPage extends BasePage {
         return cartRows.size();
     }
 
+    // index 0 = primul rand din cos
     public String getProductName(int index) {
         return elementMethods.getText(productNames.get(index));
     }

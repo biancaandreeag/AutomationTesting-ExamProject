@@ -10,12 +10,15 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.PrintWriter;
 
+// toate logurile trec pe aici: fiecare test are fisierul lui in target/logs/tests,
+// iar la final se unesc in AllTests.log (configurarea e in log4j2.xml)
 public class LoggerUtility {
 
     private static final String testLogsPath = "target/logs/tests/";
     private static final String allLogsPath = "target/logs/AllTests.log";
     private static final Logger logger = LogManager.getLogger();
 
+    // numele testului ajunge in log4j2.xml (Routing), de acolo stie in ce fisier sa scrie
     public static synchronized void startTestCase(String testName) {
         ThreadContext.put("testName", testName);
         logger.info("===== " + testName + " started =====");
@@ -44,6 +47,7 @@ public class LoggerUtility {
         return className + "." + caller.getMethodName();
     }
 
+    // la finalul suitei lipesc toate logurile intr-unul singur, ca sa nu deschid zeci de fisiere
     public static void mergeTestLogs() {
         File[] files = new File(testLogsPath).listFiles();
         if (files == null) {

@@ -21,6 +21,7 @@ public class ProductsApiTest {
 
     private String testName;
 
+    // nu extinde ShareData pentru ca nu are nevoie de browser; logul il pornesc aici
     @BeforeMethod
     public void setUp(Method method) {
         testName = getClass().getSimpleName() + "_" + method.getName();

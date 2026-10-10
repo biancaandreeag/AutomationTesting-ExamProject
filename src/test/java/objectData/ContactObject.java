@@ -1,5 +1,6 @@
 package objectData;
 
+// datele din contactData.xml; XmlDataLoader le completeaza, deci numele campurilor = numele tag-urilor
 public class ContactObject {
 
     private String name;

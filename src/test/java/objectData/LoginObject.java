@@ -1,5 +1,6 @@
 package objectData;
 
+// datele din loginData.xml; XmlDataLoader le completeaza, deci numele campurilor = numele tag-urilor
 public class LoginObject {
 
     private String email;

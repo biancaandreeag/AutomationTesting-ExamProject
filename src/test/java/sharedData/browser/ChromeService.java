@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+// setarile pentru Chrome; tot ce tine de browser sta aici, nu in teste
 public class ChromeService implements BrowserService {
 
     @Override
@@ -11,6 +12,7 @@ public class ChromeService implements BrowserService {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         options.addArguments(AdBlocking.HOST_RULES);
+        // pe GitHub nu exista ecran: browser fara fereastra, dar cu rezolutie de desktop
         if (isCiRun()) {
             options.addArguments("--headless=new");
             options.addArguments("--window-size=1920,1080");
@@ -24,6 +26,7 @@ public class ChromeService implements BrowserService {
         return driver;
     }
 
+    // pe GitHub Actions rulez cu -DCICD=true; local e false (din pom.xml)
     private boolean isCiRun() {
         return Boolean.parseBoolean(System.getProperty("CICD"));
     }

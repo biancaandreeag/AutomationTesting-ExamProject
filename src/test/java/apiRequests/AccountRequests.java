@@ -34,6 +34,7 @@ public class AccountRequests {
         LoggerUtility.infoTest("Account created through API: " + email);
     }
 
+    // apelat la finalul testului, ca pe site sa nu ramana conturi de test
     public static void deleteAccount(String email, String password) {
         RestAssured.given()
                 .formParam("email", email)

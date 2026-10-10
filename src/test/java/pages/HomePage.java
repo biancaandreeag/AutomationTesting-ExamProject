@@ -7,8 +7,10 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
+// meniul de sus al site-ului (Products, Signup / Login, Contact us) si fereastra de cookie-uri
 public class HomePage extends BasePage {
 
+    // lista, nu un singur element: daca fereastra nu apare, lista e goala si testul nu pica
     @FindBy(css = "button.fc-cta-consent")
     private List<WebElement> consentButtons;
 

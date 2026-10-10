@@ -13,6 +13,7 @@ import xmlReader.XmlDataLoader;
 @Listeners(ChainTestListener.class)
 public class ContactUsTest extends ShareData {
 
+    // completez formularul, atasez un fisier, confirm alerta si verific mesajul de succes
     @Test
     public void sendContactFormWithAttachment() {
         ContactObject data = XmlDataLoader.loadData("src/test/resources/contactData.xml", ContactObject.class).get("dataSet_1");

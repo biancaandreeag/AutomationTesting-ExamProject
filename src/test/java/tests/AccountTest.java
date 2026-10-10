@@ -34,6 +34,7 @@ public class AccountTest extends ShareData {
         AccountPage accountPage = new AccountPage(getDriver());
         Assert.assertEquals(accountPage.getAccountCreatedTitle(), "ACCOUNT CREATED!");
 
+        // contul creat pe site il salvez si in baza de date, apoi verific ca s-a salvat corect
         UsersTable usersTable = new UsersTable();
         usersTable.insertUser(data.getName(), email);
         Assert.assertEquals(usersTable.getNameByEmail(email), data.getName(), "Contul nu a ajuns corect in baza de date");

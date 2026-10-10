@@ -1,5 +1,6 @@
 package objectData;
 
+// datele din signupData.xml; XmlDataLoader le completeaza, deci numele campurilor = numele tag-urilor
 public class SignupObject {
 
     private String name;

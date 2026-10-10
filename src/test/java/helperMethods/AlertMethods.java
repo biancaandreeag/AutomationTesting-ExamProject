@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+// alertele JavaScript: ferestrele mici ale browserului, cu OK / Cancel
 public class AlertMethods {
 
     private WebDriverWait wait;
@@ -23,6 +24,7 @@ public class AlertMethods {
         waitForAlert().accept();
     }
 
+    // alerta nu apare imediat dupa click, asa ca astept sa fie acolo (maxim 10 secunde)
     private Alert waitForAlert() {
         return wait.until(ExpectedConditions.alertIsPresent());
     }

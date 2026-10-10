@@ -1,5 +1,6 @@
 package objectData;
 
+// datele din accountData.xml; XmlDataLoader le completeaza, deci numele campurilor = numele tag-urilor
 public class AccountObject {
 
     private String name;

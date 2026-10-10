@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+// lucruri pe care Selenium nu le face direct, asa ca le cer browserului prin JavaScript
 public class JavaScriptMethods {
 
     private JavascriptExecutor js;

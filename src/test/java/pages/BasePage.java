@@ -16,6 +16,7 @@ public class BasePage {
         this.driver = driver;
         this.elementMethods = new ElementMethods(driver);
         this.alertMethods = new AlertMethods(driver);
+        // leaga campurile cu @FindBy de elementele din pagina; ele se cauta abia cand le folosesc
         PageFactory.initElements(driver, this);
     }
 }

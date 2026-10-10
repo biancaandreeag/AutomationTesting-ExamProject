@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.ArrayList;
 import java.util.List;
 
+// pagina Products: lista de produse, cautarea si fereastra care apare dupa Add to cart
 public class ProductsPage extends BasePage {
 
     @FindBy(css = ".features_items .productinfo")
@@ -33,6 +34,7 @@ public class ProductsPage extends BasePage {
         super(driver);
     }
 
+    // fiecare produs e o casuta: numele e in <p>, pretul in <h2>
     public String getProductName(int index) {
         return products.get(index).findElement(By.tagName("p")).getText();
     }
