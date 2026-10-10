@@ -18,14 +18,17 @@ public class CartTest extends ShareData {
         HomePage homePage = new HomePage(getDriver());
         homePage.goToProducts();
 
+        // retin numele si pretul primului produs, ca sa le compar mai tarziu cu ce e in cos
         ProductsPage productsPage = new ProductsPage(getDriver());
         String expectedName = productsPage.getProductName(0);
         String expectedPrice = productsPage.getProductPrice(0);
 
+        // il adaug in cos si verific mesajul din fereastra de confirmare
         productsPage.addProductToCart(0);
         Assert.assertEquals(productsPage.getAddedMessage(), "Your product has been added to cart.");
         productsPage.viewCart();
 
+        // in cos trebuie sa fie exact produsul adaugat, cu acelasi nume si pret
         CartPage cartPage = new CartPage(getDriver());
         Assert.assertEquals(cartPage.getNumberOfProducts(), 1, "In cos trebuia sa fie un singur produs");
         Assert.assertEquals(cartPage.getProductName(0), expectedName, "In cos e alt produs decat cel adaugat");

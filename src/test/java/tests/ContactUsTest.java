@@ -24,6 +24,7 @@ public class ContactUsTest extends ShareData {
         contactUsPage.fillForm(data);
         contactUsPage.submitAndConfirm();
 
+        // verific si textul alertei, si mesajul de succes de dupa ea
         Assert.assertEquals(contactUsPage.getAlertText(), data.getExpectedAlert(), "Alt text in alerta de confirmare");
         Assert.assertEquals(contactUsPage.getSuccessMessage(), data.getExpectedMessage(), "Formularul nu a fost trimis");
     }

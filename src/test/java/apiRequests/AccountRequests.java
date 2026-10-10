@@ -9,6 +9,7 @@ import objectData.AccountObject;
 // conturi create si sterse prin API: pregatesc datele unui test fara sa trec prin formularul de inregistrare
 public class AccountRequests {
 
+    // POST /api/createAccount: contul se creeaza direct pe server, cu datele din accountData.xml
     public static void createAccount(AccountObject data, String email) {
         Response response = RestAssured.given()
                 .formParam("name", data.getName())

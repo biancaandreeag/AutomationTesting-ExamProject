@@ -6,7 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-// a doua pagina de inregistrare: "Enter Account Information"
+// a doua pagina a inregistrarii ("Enter Account Information"), unde ajung dupa ce
+// completez numele si emailul in LoginPage. are doua parti: datele contului (sus)
+// si adresa (jos); la final butonul Create Account
 public class SignupPage extends BasePage {
 
     @FindBy(id = "id_gender2")
@@ -78,6 +80,7 @@ public class SignupPage extends BasePage {
         LoggerUtility.infoTest("Filled address information");
     }
 
+    // dupa click, site-ul arata "ACCOUNT CREATED!" (il citesc din AccountPage)
     public void createAccount() {
         elementMethods.clickElement(createAccountButton);
         LoggerUtility.infoTest("Clicked Create Account");

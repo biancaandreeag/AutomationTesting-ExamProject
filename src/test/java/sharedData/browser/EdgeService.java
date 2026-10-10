@@ -4,7 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 
-// setarile pentru Edge; tot ce tine de browser sta aici, nu in teste
+// setarile pentru Edge: fereastra mare, reclamele blocate si, pe GitHub, modul fara ecran (headless).
+// tot ce tine de browser sta aici, nu in teste sau in ShareData
 public class EdgeService implements BrowserService {
 
     @Override

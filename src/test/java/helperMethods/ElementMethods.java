@@ -10,8 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-// actiunile de baza pe elemente (click, scris, citit text, select), toate cu asteptare inainte:
-// asa nu dau click si nu scriu intr-un element care inca nu s-a incarcat
+// metodele de baza pe care le folosesc toate paginile: click, scris intr-un camp,
+// citit un text si ales dintr-un dropdown. fiecare asteapta intai elementul
+// (sa fie vizibil sau clickabil), ca sa nu dau click pe ceva care inca nu s-a incarcat.
+// asa nu am nevoie de Thread.sleep nicaieri
 public class ElementMethods {
 
     private WebDriver driver;
@@ -25,10 +27,12 @@ public class ElementMethods {
         this.javaScriptMethods = new JavaScriptMethods(driver);
     }
 
+    // astept pana elementul se vede pe ecran (nu doar sa existe in pagina)
     public void waitForVisibility(WebElement element) {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
+    // click sigur: astept sa fie clickabil, il aduc in mijlocul ecranului, apoi dau click.
     // reclamele Google (iframe) apar uneori peste butoane si primesc ele click-ul;
     // atunci apas butonul prin JavaScript, ca un utilizator care inchide reclama si da click
     public void clickElement(WebElement element) {
@@ -49,6 +53,7 @@ public class ElementMethods {
         element.sendKeys(text);
     }
 
+    // citesc textul doar dupa ce elementul e vizibil, altfel as putea primi un text gol
     public String getText(WebElement element) {
         waitForVisibility(element);
         return element.getText();

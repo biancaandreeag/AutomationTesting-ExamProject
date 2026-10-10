@@ -8,7 +8,9 @@ import org.openqa.selenium.support.FindBy;
 
 import java.io.File;
 
-// pagina Contact Us: formularul cu nume, email, subiect, mesaj si fisier atasat
+// pagina Contact Us: formularul cu nume, email, subiect, mesaj si un fisier atasat.
+// dupa Submit, site-ul cere confirmare printr-o alerta JavaScript, iar dupa OK
+// apare mesajul verde de succes
 public class ContactUsPage extends BasePage {
 
     @FindBy(css = "input[data-qa='name']")
@@ -39,6 +41,7 @@ public class ContactUsPage extends BasePage {
         super(driver);
     }
 
+    // completez toate campurile cu datele din contactData.xml
     public void fillForm(ContactObject data) {
         elementMethods.fillElement(nameField, data.getName());
         elementMethods.fillElement(emailField, data.getEmail());
@@ -61,6 +64,7 @@ public class ContactUsPage extends BasePage {
         return alertText;
     }
 
+    // mesajul verde care apare deasupra formularului dupa trimitere
     public String getSuccessMessage() {
         return elementMethods.getText(successMessage);
     }

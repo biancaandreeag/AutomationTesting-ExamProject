@@ -14,6 +14,8 @@ import java.util.Map;
 // fiecare <dataSet_N> din XML devine un obiect; tag-urile trebuie sa aiba exact numele campurilor din clasa
 public class XmlDataLoader {
 
+    // exemplu: loadData("src/test/resources/loginData.xml", LoginObject.class)
+    // intoarce un Map: "dataSet_1" -> obiectul cu datele lui, "dataSet_2" -> ...
     public static <T> Map<String, T> loadData(String filePath, Class<T> clazz) {
         // LinkedHashMap: seturile raman in ordinea din fisier
         Map<String, T> dataSets = new LinkedHashMap<>();

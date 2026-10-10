@@ -12,10 +12,12 @@ public class UsersTable {
 
     private Connection connection = DBConnection.getInstance().getConnection();
 
+    // adaug un rand cu numele si emailul contului creat pe site
     public synchronized void insertUser(String name, String email) {
         execute("INSERT INTO users (name, email) VALUES (?, ?)", name, email);
     }
 
+    // sterg randul la finalul testului, ca tabela sa ramana curata
     public synchronized void deleteUserByEmail(String email) {
         execute("DELETE FROM users WHERE email = ?", email);
     }

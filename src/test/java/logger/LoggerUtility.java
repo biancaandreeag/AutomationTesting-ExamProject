@@ -24,6 +24,7 @@ public class LoggerUtility {
         logger.info("===== " + testName + " started =====");
     }
 
+    // scot numele testului, ca urmatorul test sa scrie in fisierul lui
     public static synchronized void endTestCase(String testName) {
         logger.info("===== " + testName + " ended =====");
         ThreadContext.remove("testName");
@@ -35,6 +36,7 @@ public class LoggerUtility {
         ChainTestListener.log(message);
     }
 
+    // folosit in ShareData cand un test pica
     public static synchronized void errorLog(String message) {
         logger.error(getCaller() + " - " + message);
         ChainTestListener.log("ERROR: " + message);

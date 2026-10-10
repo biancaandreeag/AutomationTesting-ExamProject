@@ -23,9 +23,11 @@ public class AccountTest extends ShareData {
         // email nou la fiecare rulare, altfel site-ul spune ca exista deja
         String email = "bianca." + System.currentTimeMillis() + "@example.com";
 
+        // pasul 1 al inregistrarii: nume + email
         new HomePage(getDriver()).goToSignupLogin();
         new LoginPage(getDriver()).signup(data.getName(), email);
 
+        // pasul 2: datele contului si adresa, apoi Create Account
         SignupPage signupPage = new SignupPage(getDriver());
         signupPage.fillAccountInformation(data);
         signupPage.fillAddressInformation(data);
@@ -39,9 +41,11 @@ public class AccountTest extends ShareData {
         usersTable.insertUser(data.getName(), email);
         Assert.assertEquals(usersTable.getNameByEmail(email), data.getName(), "Contul nu a ajuns corect in baza de date");
 
+        // continui pe site si verific ca sunt logat cu contul nou
         accountPage.continueToSite();
         Assert.assertEquals(accountPage.getLoggedInText(), "Logged in as " + data.getName(), "Utilizatorul nu e logat dupa crearea contului");
 
+        // la final sterg contul de pe site si randul din baza de date
         accountPage.deleteAccount();
         Assert.assertEquals(accountPage.getAccountDeletedTitle(), "ACCOUNT DELETED!");
         usersTable.deleteUserByEmail(email);

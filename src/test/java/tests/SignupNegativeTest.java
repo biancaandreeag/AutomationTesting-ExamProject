@@ -16,6 +16,7 @@ import java.util.Map;
 // doua teste negative pe inregistrare, cu datele din signupData.xml
 public class SignupNegativeTest extends ShareData {
 
+    // citesc fisierul o singura data, pentru ambele teste
     private Map<String, SignupObject> signupData = XmlDataLoader.loadData("src/test/resources/signupData.xml", SignupObject.class);
 
     // contul din dataSet_1 exista deja pe site, deci inregistrarea trebuie refuzata

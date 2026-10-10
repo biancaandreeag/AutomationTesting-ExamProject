@@ -9,9 +9,12 @@ import org.openqa.selenium.support.FindBy;
 import java.util.ArrayList;
 import java.util.List;
 
-// pagina Products: lista de produse, cautarea si fereastra care apare dupa Add to cart
+// pagina Products (/products): lista cu toate produsele, campul de cautare
+// si fereastra care apare dupa Add to cart (cu "View Cart" si "Continue Shopping").
+// produsele le aleg dupa pozitie: index 0 = primul produs din lista
 public class ProductsPage extends BasePage {
 
+    // toate casutele de produs din pagina, in ordinea in care apar
     @FindBy(css = ".features_items .productinfo")
     private List<WebElement> products;
 
@@ -43,6 +46,7 @@ public class ProductsPage extends BasePage {
         return products.get(index).findElement(By.tagName("h2")).getText();
     }
 
+    // butonul Add to cart e in casuta produsului; il caut in interiorul ei, ca sa nu apas pe alt produs
     public void addProductToCart(int index) {
         WebElement addButton = products.get(index).findElement(By.cssSelector("a.add-to-cart"));
         elementMethods.clickElement(addButton);
@@ -54,17 +58,20 @@ public class ProductsPage extends BasePage {
         return elementMethods.getText(addedMessage);
     }
 
+    // din fereastra de confirmare apas "View Cart" si ajung in cos
     public void viewCart() {
         elementMethods.clickElement(viewCartLink);
         LoggerUtility.infoTest("Opened cart from the confirmation window");
     }
 
+    // scriu termenul in campul de cautare si apas lupa de langa
     public void searchProduct(String term) {
         elementMethods.fillElement(searchField, term);
         elementMethods.clickElement(searchButton);
         LoggerUtility.infoTest("Searched for " + term);
     }
 
+    // titlul de deasupra listei: "ALL PRODUCTS" sau, dupa o cautare, "SEARCHED PRODUCTS"
     public String getProductsTitle() {
         return elementMethods.getText(productsTitle);
     }

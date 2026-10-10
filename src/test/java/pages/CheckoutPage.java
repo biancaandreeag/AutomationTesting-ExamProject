@@ -6,7 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-// checkout -> plata -> confirmarea comenzii
+// tot ce urmeaza dupa cos: pagina de checkout (adresa + Place Order),
+// pagina de plata (datele cardului) si pagina de confirmare ("ORDER PLACED!").
+// sunt pasii aceleiasi comenzi, asa ca i-am tinut intr-o singura clasa
 public class CheckoutPage extends BasePage {
 
     @FindBy(css = "#address_delivery .address_firstname")
@@ -50,6 +52,7 @@ public class CheckoutPage extends BasePage {
         super(driver);
     }
 
+    // numele din adresa de livrare, ex. "Mrs. Bianca Test"
     public String getDeliveryName() {
         return elementMethods.getText(deliveryName);
     }
@@ -58,12 +61,14 @@ public class CheckoutPage extends BasePage {
         return elementMethods.getText(deliveryAddressBlock);
     }
 
+    // comentariul la comanda e optional pe site, dar il completez ca sa folosesc si campul asta
     public void placeOrder(String comment) {
         elementMethods.fillElement(commentField, comment);
         elementMethods.clickElement(placeOrderButton);
         LoggerUtility.infoTest("Placed the order");
     }
 
+    // cardul e de test, site-ul nu face plati reale; dupa "Pay and Confirm Order" apare confirmarea
     public void payWithCard(CheckoutObject data) {
         elementMethods.fillElement(nameOnCardField, data.getNameOnCard());
         elementMethods.fillElement(cardNumberField, data.getCardNumber());

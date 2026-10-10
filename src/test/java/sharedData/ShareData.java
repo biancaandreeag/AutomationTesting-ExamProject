@@ -22,6 +22,8 @@ public class ShareData {
     private WebDriver driver;
     private String testName;
 
+    // inainte de fiecare test: pornesc logul testului, deschid browserul ales,
+    // intru pe site si inchid fereastra de cookie-uri
     @BeforeMethod
     public void prepareBrowser(Method method) {
         // numele logului: Clasa_metoda (ex. CartTest_addProductToCart)
@@ -34,6 +36,8 @@ public class ShareData {
         LoggerUtility.infoTest("Browser opened on automationexercise.com");
     }
 
+    // dupa fiecare test: daca a picat, scriu eroarea in log si pun un screenshot in raport,
+    // apoi inchid browserul cu quit() (inchide si procesul chromedriver, nu doar fereastra).
     // screenshot-ul se face inainte de quit, cat browserul mai e deschis
     @AfterMethod
     public void clearBrowser(ITestResult result) {

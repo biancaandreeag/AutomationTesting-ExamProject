@@ -33,8 +33,10 @@ public class SearchTest extends ShareData {
         homePage.goToProducts();
 
         ProductsPage productsPage = new ProductsPage(getDriver());
+        // caut termenul din setul curent (ex. dress, jeans)
         productsPage.searchProduct(data.getSearchTerm());
 
+        // dupa cautare, titlul listei se schimba
         Assert.assertEquals(productsPage.getProductsTitle(), "SEARCHED PRODUCTS");
 
         // site-ul cauta si dupa categorie, nu doar dupa nume: pentru "dress" intoarce si

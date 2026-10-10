@@ -5,10 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-// pagina Signup / Login: in stanga login-ul, in dreapta primul pas al inregistrarii (nume + email)
+// pagina Signup / Login (/login) are doua formulare unul langa altul:
+// in stanga login-ul (email + parola), in dreapta primul pas al inregistrarii (nume + email).
+// le deosebesc prin atributul data-qa, pus de site special pentru teste
 public class LoginPage extends BasePage {
 
-    // pe pagina sunt doua formulare (login si signup), data-qa le deosebeste
+    // formularul de login
     @FindBy(css = "input[data-qa='login-email']")
     private WebElement emailField;
 
@@ -21,6 +23,7 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//form[@action='/login']//p")
     private WebElement loginErrorMessage;
 
+    // formularul de inregistrare
     @FindBy(css = "input[data-qa='signup-name']")
     private WebElement signupNameField;
 
@@ -37,6 +40,7 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    // completez emailul si parola si apas Login; rezultatul il verifica testul, nu pagina
     public void login(String email, String password) {
         elementMethods.fillElement(emailField, email);
         elementMethods.fillElement(passwordField, password);
@@ -44,10 +48,12 @@ public class LoginPage extends BasePage {
         LoggerUtility.infoTest("Tried to log in with " + email);
     }
 
+    // mesajul rosu de sub formular, ex. "Your email or password is incorrect!"
     public String getLoginErrorMessage() {
         return elementMethods.getText(loginErrorMessage);
     }
 
+    // primul pas al inregistrarii; daca emailul e nou, site-ul trece la formularul mare (SignupPage)
     public void signup(String name, String email) {
         elementMethods.fillElement(signupNameField, name);
         elementMethods.fillElement(signupEmailField, email);
@@ -55,6 +61,7 @@ public class LoginPage extends BasePage {
         LoggerUtility.infoTest("Tried to sign up with " + email);
     }
 
+    // apare cand emailul e deja folosit: "Email Address already exist!"
     public String getSignupErrorMessage() {
         return elementMethods.getText(signupErrorMessage);
     }

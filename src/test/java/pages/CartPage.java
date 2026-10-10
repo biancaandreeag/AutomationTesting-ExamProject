@@ -7,7 +7,9 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-// pagina cosului (View Cart): randurile din tabel, numele, pretul si butonul de checkout
+// pagina cosului (/view_cart): un tabel cu cate un rand pentru fiecare produs adaugat.
+// de aici citesc ce e in cos (nume, pret), ca sa compar cu ce am adaugat,
+// si tot de aici merg mai departe la checkout
 public class CartPage extends BasePage {
 
     @FindBy(css = "#cart_info_table tbody tr")
@@ -26,6 +28,7 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
+    // cate randuri are tabelul = cate produse diferite sunt in cos
     public int getNumberOfProducts() {
         return cartRows.size();
     }
@@ -39,6 +42,7 @@ public class CartPage extends BasePage {
         return elementMethods.getText(productPrices.get(index));
     }
 
+    // butonul "Proceed To Checkout"; merge doar daca esti logat (altfel site-ul cere login)
     public void proceedToCheckout() {
         elementMethods.clickElement(proceedToCheckoutButton);
         LoggerUtility.infoTest("Proceeded to checkout");

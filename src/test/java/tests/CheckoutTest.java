@@ -29,6 +29,7 @@ public class CheckoutTest extends ShareData {
         AccountRequests.createAccount(account, email);
 
         try {
+            // ma loghez pe site cu contul tocmai creat
             HomePage homePage = new HomePage(getDriver());
             homePage.goToSignupLogin();
             new LoginPage(getDriver()).login(email, account.getPassword());
@@ -37,21 +38,25 @@ public class CheckoutTest extends ShareData {
             Assert.assertEquals(new AccountPage(getDriver()).getLoggedInText(), "Logged in as " + account.getName(),
                     "Login-ul cu contul creat prin API nu a reusit");
 
+            // adaug primul produs in cos si retin numele lui
             homePage.goToProducts();
             ProductsPage productsPage = new ProductsPage(getDriver());
             String productName = productsPage.getProductName(0);
             productsPage.addProductToCart(0);
             productsPage.viewCart();
 
+            // in cos verific produsul si merg la checkout
             CartPage cartPage = new CartPage(getDriver());
             Assert.assertEquals(cartPage.getProductName(0), productName, "In cos e alt produs decat cel adaugat");
             cartPage.proceedToCheckout();
 
+            // la checkout, adresa de livrare trebuie sa fie cea din cont
             CheckoutPage checkoutPage = new CheckoutPage(getDriver());
             Assert.assertEquals(checkoutPage.getDeliveryName(), "Mrs. " + account.getFirstName() + " " + account.getLastName(),
                     "Numele de livrare nu e cel din cont");
             Assert.assertTrue(checkoutPage.getDeliveryAddressText().contains(account.getAddress()), "Adresa de livrare nu e cea din cont");
 
+            // plasez comanda, platesc cu cardul de test si verific confirmarea
             checkoutPage.placeOrder(checkout.getComment());
             checkoutPage.payWithCard(checkout);
             Assert.assertEquals(checkoutPage.getOrderPlacedTitle(), "ORDER PLACED!");

@@ -2,7 +2,8 @@ package sharedData.browser;
 
 import org.openqa.selenium.WebDriver;
 
-// testele cer doar "un browser"; aici se decide care anume, dupa proprietatea browser
+// aici se decide ce browser porneste. testele nu stiu daca ruleaza pe Chrome sau pe Edge,
+// cer doar un driver. daca as vrea si Firefox, as adauga o clasa FirefoxService si un case aici
 public class BrowserFactory {
 
     // browserul vine din pom.xml sau din linia de comanda: mvn test -Dbrowser=edge

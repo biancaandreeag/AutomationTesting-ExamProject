@@ -15,7 +15,8 @@ import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
 
-// teste fara browser, direct pe API-ul site-ului
+// teste fara browser, direct pe API-ul site-ului (REST Assured): trimit cererea, verific statusul,
+// apoi transform raspunsul in obiecte Java (pachetul apiObjects) si verific produsele
 @Listeners(ChainTestListener.class)
 public class ProductsApiTest {
 
@@ -34,6 +35,7 @@ public class ProductsApiTest {
         LoggerUtility.endTestCase(testName);
     }
 
+    // GET /api/productsList: toate produsele magazinului
     @Test
     public void getAllProducts() throws Exception {
         Response response = RestAssured.given().get("/productsList");
@@ -46,6 +48,7 @@ public class ProductsApiTest {
         LoggerUtility.infoTest("Products list returned " + body.getProducts().size() + " products");
     }
 
+    // POST /api/searchProduct cu search_product=jeans, ca un formular trimis de pe site
     @Test
     public void searchProduct() throws Exception {
         Response response = RestAssured.given()
