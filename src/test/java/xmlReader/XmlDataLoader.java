@@ -8,14 +8,15 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.lang.reflect.Field;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 // fiecare <dataSet_N> din XML devine un obiect; tag-urile trebuie sa aiba exact numele campurilor din clasa
 public class XmlDataLoader {
 
     public static <T> Map<String, T> loadData(String filePath, Class<T> clazz) {
-        Map<String, T> dataSets = new HashMap<>();
+        // LinkedHashMap: seturile raman in ordinea din fisier
+        Map<String, T> dataSets = new LinkedHashMap<>();
         try {
             Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new File(filePath));
             NodeList sets = document.getDocumentElement().getChildNodes();

@@ -3,6 +3,7 @@ package tests;
 import com.aventstack.chaintest.plugins.ChainTestListener;
 import objectData.SearchObject;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.HomePage;
@@ -15,9 +16,18 @@ import java.util.List;
 @Listeners(ChainTestListener.class)
 public class SearchTest extends ShareData {
 
-    @Test
-    public void searchProducts() {
-        SearchObject data = XmlDataLoader.loadData("src/test/resources/searchData.xml", SearchObject.class).get("dataSet_1");
+    // data-driven: testul ruleaza o data pentru fiecare <dataSet_N> din searchData.xml;
+    // un caz nou de cautare se adauga doar in XML, fara cod
+    @DataProvider(name = "searchData")
+    public Object[][] searchData() {
+        return XmlDataLoader.loadData("src/test/resources/searchData.xml", SearchObject.class)
+                .values().stream()
+                .map(data -> new Object[]{data})
+                .toArray(Object[][]::new);
+    }
+
+    @Test(dataProvider = "searchData")
+    public void searchProducts(SearchObject data) {
 
         HomePage homePage = new HomePage(getDriver());
         homePage.goToProducts();
