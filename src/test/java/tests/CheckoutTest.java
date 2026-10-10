@@ -7,6 +7,7 @@ import objectData.CheckoutObject;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import pages.AccountPage;
 import pages.CartPage;
 import pages.CheckoutPage;
 import pages.HomePage;
@@ -31,6 +32,10 @@ public class CheckoutTest extends ShareData {
             HomePage homePage = new HomePage(getDriver());
             homePage.goToSignupLogin();
             new LoginPage(getDriver()).login(email, account.getPassword());
+            // dupa login pagina se reincarca; astept utilizatorul logat inainte de urmatorul click,
+            // altfel click-ul poate nimeri un element din pagina veche (StaleElementReferenceException)
+            Assert.assertEquals(new AccountPage(getDriver()).getLoggedInText(), "Logged in as " + account.getName(),
+                    "Login-ul cu contul creat prin API nu a reusit");
 
             homePage.goToProducts();
             ProductsPage productsPage = new ProductsPage(getDriver());
