@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- card de test: site-ul nu face plati reale -->
+<dataTests>
+    <dataSet_1>
+        <comment>Va rog livrare dupa ora 17.</comment>
+        <nameOnCard>Bianca Test</nameOnCard>
+        <cardNumber>4111111111111111</cardNumber>
+        <cvc>123</cvc>
+        <expiryMonth>12</expiryMonth>
+        <expiryYear>2030</expiryYear>
+    </dataSet_1>
+</dataTests>

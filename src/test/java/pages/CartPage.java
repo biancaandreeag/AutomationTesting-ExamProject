@@ -1,5 +1,6 @@
 package pages;
 
+import logger.LoggerUtility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +18,9 @@ public class CartPage extends BasePage {
     @FindBy(css = "#cart_info_table .cart_price p")
     private List<WebElement> productPrices;
 
+    @FindBy(xpath = "//a[text()='Proceed To Checkout']")
+    private WebElement proceedToCheckoutButton;
+
     public CartPage(WebDriver driver) {
         super(driver);
     }
@@ -31,5 +35,10 @@ public class CartPage extends BasePage {
 
     public String getProductPrice(int index) {
         return elementMethods.getText(productPrices.get(index));
+    }
+
+    public void proceedToCheckout() {
+        elementMethods.clickElement(proceedToCheckoutButton);
+        LoggerUtility.infoTest("Proceeded to checkout");
     }
 }

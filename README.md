@@ -12,6 +12,7 @@ Proiectul final pentru cursul de Testare Automată: teste automate pe site-ul
 | `SearchTest` | căutarea de produse, date din XML (mai multe seturi) |
 | `CartTest` | adaug un produs în coș → mesajul de confirmare → produsul, numele și prețul din coș |
 | `AccountTest` | creez un cont nou → îl salvez și îl verific în MySQL → îl șterg de pe site |
+| `CheckoutTest` | cont creat prin API → login → produs în coș → checkout (adresa) → plata → „ORDER PLACED!” |
 | `ProductsApiTest` | API: lista de produse și căutarea, fără browser |
 
 ## Tehnologii
@@ -30,6 +31,7 @@ MySQL (JDBC), REST Assured + Jackson, GitHub Actions.
 | `objectData` + `xmlReader` | datele de test din `src/test/resources/*.xml`, încărcate în obiecte |
 | `configUtility`, `database`, `queries` | configurarea și conexiunea la MySQL, query-urile pe tabela `users` |
 | `apiObjects` | obiectele în care se transformă răspunsurile API |
+| `apiRequests` | conturi create și șterse prin API, ca date de pregătire pentru teste |
 | `logger` | `LoggerUtility`: un log pentru fiecare test + `AllTests.log` |
 | `tests`, `tests/api` | testele |
 
