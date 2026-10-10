@@ -2,6 +2,7 @@
 <!-- card de test: site-ul nu face plati reale -->
 <dataTests>
     <dataSet_1>
+        <productName>Blue Top</productName>
         <comment>Va rog livrare dupa ora 17.</comment>
         <nameOnCard>Bianca Test</nameOnCard>
         <cardNumber>4111111111111111</cardNumber>

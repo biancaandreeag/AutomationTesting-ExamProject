@@ -4,12 +4,17 @@ package objectData;
 // fara setteri: valorile le pune XmlDataLoader, testele doar le citesc prin getteri
 public class CheckoutObject {
 
+    private String productName;
     private String comment;
     private String nameOnCard;
     private String cardNumber;
     private String cvc;
     private String expiryMonth;
     private String expiryYear;
+
+    public String getProductName() {
+        return productName;
+    }
 
     public String getComment() {
         return comment;

@@ -58,6 +58,17 @@ public class ProductsPage extends BasePage {
         return elementMethods.getText(addedMessage);
     }
 
+    // aceeasi metoda, dar dupa numele produsului in loc de pozitie (overloading = polimorfism):
+    // Java alege varianta dupa parametru, addProductToCart(0) sau addProductToCart("Blue Top")
+    public void addProductToCart(String productName) {
+        int index = getProductNames().indexOf(productName);
+        if (index == -1) {
+            throw new IllegalArgumentException("Produsul nu e in lista: " + productName);
+        }
+        LoggerUtility.infoTest("Found " + productName + " at position " + index);
+        addProductToCart(index);
+    }
+
     // din fereastra de confirmare apas "View Cart" si ajung in cos
     public void viewCart() {
         elementMethods.clickElement(viewCartLink);

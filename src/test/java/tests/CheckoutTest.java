@@ -38,16 +38,15 @@ public class CheckoutTest extends ShareData {
             Assert.assertEquals(new AccountPage(getDriver()).getLoggedInText(), "Logged in as " + account.getName(),
                     "Login-ul cu contul creat prin API nu a reusit");
 
-            // adaug primul produs in cos si retin numele lui
+            // adaug in cos produsul din checkoutData.xml, de data asta dupa nume (in CartTest e dupa pozitie)
             homePage.goToProducts();
             ProductsPage productsPage = new ProductsPage(getDriver());
-            String productName = productsPage.getProductName(0);
-            productsPage.addProductToCart(0);
+            productsPage.addProductToCart(checkout.getProductName());
             productsPage.viewCart();
 
             // in cos verific produsul si merg la checkout
             CartPage cartPage = new CartPage(getDriver());
-            Assert.assertEquals(cartPage.getProductName(0), productName, "In cos e alt produs decat cel adaugat");
+            Assert.assertEquals(cartPage.getProductName(0), checkout.getProductName(), "In cos e alt produs decat cel cerut");
             cartPage.proceedToCheckout();
 
             // la checkout, adresa de livrare trebuie sa fie cea din cont
