@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataTests>
+    <dataSet_1>
+        <name>Bianca Test</name>
+        <email>bianca.examproject@example.com</email>
+        <subject>Intrebare despre o comanda</subject>
+        <message>Buna ziua, as dori informatii despre livrarea comenzii mele.</message>
+        <filePath>src/test/resources/uploadFiles/contactAttachment.txt</filePath>
+        <expectedAlert>Press OK to proceed!</expectedAlert>
+        <expectedMessage>Success! Your details have been submitted successfully.</expectedMessage>
+    </dataSet_1>
+</dataTests>

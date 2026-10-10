@@ -1,5 +1,6 @@
 package pages;
 
+import helperMethods.AlertMethods;
 import helperMethods.ElementMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -9,10 +10,12 @@ public class BasePage {
 
     protected WebDriver driver;
     protected ElementMethods elementMethods;
+    protected AlertMethods alertMethods;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.elementMethods = new ElementMethods(driver);
+        this.alertMethods = new AlertMethods(driver);
         PageFactory.initElements(driver, this);
     }
 }

@@ -15,6 +15,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@href='/login']")
     private WebElement signupLoginLink;
 
+    @FindBy(xpath = "//a[@href='/contact_us']")
+    private WebElement contactUsLink;
+
     @FindBy(xpath = "//a[@href='/products']")
     private WebElement productsLink;
 
@@ -38,5 +41,10 @@ public class HomePage extends BasePage {
     public void goToProducts() {
         elementMethods.clickElement(productsLink);
         LoggerUtility.infoTest("Opened Products page");
+    }
+
+    public void goToContactUs() {
+        elementMethods.clickElement(contactUsLink);
+        LoggerUtility.infoTest("Opened Contact Us page");
     }
 }

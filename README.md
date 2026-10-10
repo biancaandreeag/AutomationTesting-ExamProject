@@ -12,6 +12,7 @@ Proiectul final pentru cursul de Testare Automată: teste automate pe site-ul
 | `SearchTest` | căutarea de produse, date din XML (mai multe seturi) |
 | `CartTest` | adaug un produs în coș → mesajul de confirmare → produsul, numele și prețul din coș |
 | `AccountTest` | creez un cont nou → îl salvez și îl verific în MySQL → îl șterg de pe site |
+| `ContactUsTest` | formularul Contact Us cu fișier atașat → alerta de confirmare → mesajul de succes |
 | `CheckoutTest` | cont creat prin API → login → produs în coș → checkout (adresa) → plata → „ORDER PLACED!” |
 | `ProductsApiTest` | API: lista de produse și căutarea, fără browser |
 
@@ -25,7 +26,7 @@ MySQL (JDBC), REST Assured + Jackson, GitHub Actions.
 | Pachet | Rol |
 |---|---|
 | `pages` | câte o clasă pentru fiecare pagină (elementele și acțiunile ei), toate extind `BasePage` |
-| `helperMethods` | `ElementMethods` (așteptări, click, completare), `JavaScriptMethods` (scroll, click prin JS) |
+| `helperMethods` | `ElementMethods` (așteptări, click, completare, select), `JavaScriptMethods` (scroll, click prin JS), `AlertMethods` (alerte) |
 | `sharedData` | `ShareData`: deschide și închide browserul pentru fiecare test, screenshot la eșec |
 | `sharedData/browser` | `BrowserFactory` alege Chrome sau Edge; setările fiecărui browser |
 | `objectData` + `xmlReader` | datele de test din `src/test/resources/*.xml`, încărcate în obiecte |
