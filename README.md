@@ -52,6 +52,10 @@ mvn clean test -Dbrowser=edge                         # alt browser (implicit ch
 mysql -u root < src/test/resources/createTables.sql
 ```
 
+Parola bazei nu e în cod: se citește din variabila de mediu `DB_PASSWORD`
+(dacă nu e setată, se folosește parola goală). De exemplu: `DB_PASSWORD=parola mvn clean test`.
+Pe GitHub Actions e setată în workflow.
+
 **GitHub Actions:** tab-ul *Actions* → *Automation tests* → *Run workflow*, alegi suita și browserul.
 Pe GitHub testele rulează headless (`-DCICD=true`), cu MySQL pornit lângă ele.
 

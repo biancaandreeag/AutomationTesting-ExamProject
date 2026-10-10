@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- baza locala de test; pe un proiect real parola ar veni dintr-o variabila de mediu -->
+<!-- parola NU sta aici: vine din variabila de mediu DB_PASSWORD (vezi ConfigReader) -->
 <databaseConfig>
     <port>3306</port>
     <database>exam_database</database>
     <username>root</username>
-    <password></password>
 </databaseConfig>

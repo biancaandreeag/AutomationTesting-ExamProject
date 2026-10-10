@@ -14,7 +14,7 @@ public class ConfigReader {
                     getValue(document, "port"),
                     getValue(document, "database"),
                     getValue(document, "username"),
-                    getValue(document, "password"));
+                    getPassword());
         } catch (Exception e) {
             throw new RuntimeException("Nu am putut citi configurarea bazei de date: " + e.getMessage(), e);
         }
@@ -22,5 +22,11 @@ public class ConfigReader {
 
     private static String getValue(Document document, String tag) {
         return document.getElementsByTagName(tag).item(0).getTextContent().trim();
+    }
+
+    // parolele nu se pun in cod si nici pe Git; local, fara variabila setata, MySQL-ul are root fara parola
+    private static String getPassword() {
+        String password = System.getenv("DB_PASSWORD");
+        return password != null ? password : "";
     }
 }

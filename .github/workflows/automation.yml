@@ -36,15 +36,16 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # MySQL e deja instalat pe masina GitHub (root / root); il pornesc si las root fara parola, ca local
+      # MySQL e deja instalat pe masina GitHub, cu root / root
       # (un service cu imaginea mysql din Docker Hub pica uneori din cauza limitei de descarcari)
       - name: Start MySQL and create database
         run: |
           sudo systemctl start mysql
-          mysql -u root -proot -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '';"
-          mysql -u root < src/test/resources/createTables.sql
+          mysql -u root -proot < src/test/resources/createTables.sql
 
       - name: Run tests
+        env:
+          DB_PASSWORD: root
         run: mvn clean test -DCICD=true -Dbrowser=${{ github.event.inputs.browser }} -Dsuite=suites/${{ github.event.inputs.suite }}.xml
 
       # raportul si logurile se pot descarca din pagina rularii, chiar daca au picat teste
