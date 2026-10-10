@@ -15,6 +15,7 @@ public class EdgeService implements BrowserService {
             options.addArguments("--headless=new");
             options.addArguments("--window-size=1920,1080");
             options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--no-sandbox");
         }
         WebDriver driver = new EdgeDriver(options);
         // pe Mac --start-maximized nu are efect; in headless maximize() ar micsora fereastra
