@@ -39,7 +39,7 @@ public class AccountTest extends ShareData {
         Assert.assertEquals(usersTable.getNameByEmail(email), data.getName(), "Contul nu a ajuns corect in baza de date");
 
         accountPage.continueToSite();
-        Assert.assertEquals(accountPage.getLoggedInText(), "Logged in as " + data.getName());
+        Assert.assertEquals(accountPage.getLoggedInText(), "Logged in as " + data.getName(), "Utilizatorul nu e logat dupa crearea contului");
 
         accountPage.deleteAccount();
         Assert.assertEquals(accountPage.getAccountDeletedTitle(), "ACCOUNT DELETED!");

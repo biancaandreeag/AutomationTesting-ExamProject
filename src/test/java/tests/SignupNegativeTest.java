@@ -26,7 +26,7 @@ public class SignupNegativeTest extends ShareData {
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.signup(data.getName(), data.getEmail());
 
-        Assert.assertEquals(loginPage.getSignupErrorMessage(), data.getExpectedMessage());
+        Assert.assertEquals(loginPage.getSignupErrorMessage(), data.getExpectedMessage(), "Mesaj gresit pentru un email deja folosit");
     }
 
     @Test

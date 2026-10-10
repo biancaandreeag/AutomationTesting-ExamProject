@@ -23,6 +23,6 @@ public class LoginTest extends ShareData {
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.login(data.getEmail(), data.getPassword());
 
-        Assert.assertEquals(loginPage.getLoginErrorMessage(), data.getExpectedMessage());
+        Assert.assertEquals(loginPage.getLoginErrorMessage(), data.getExpectedMessage(), "Mesaj gresit la login cu date gresite");
     }
 }

@@ -39,11 +39,12 @@ public class CheckoutTest extends ShareData {
             productsPage.viewCart();
 
             CartPage cartPage = new CartPage(getDriver());
-            Assert.assertEquals(cartPage.getProductName(0), productName);
+            Assert.assertEquals(cartPage.getProductName(0), productName, "In cos e alt produs decat cel adaugat");
             cartPage.proceedToCheckout();
 
             CheckoutPage checkoutPage = new CheckoutPage(getDriver());
-            Assert.assertEquals(checkoutPage.getDeliveryName(), "Mrs. " + account.getFirstName() + " " + account.getLastName());
+            Assert.assertEquals(checkoutPage.getDeliveryName(), "Mrs. " + account.getFirstName() + " " + account.getLastName(),
+                    "Numele de livrare nu e cel din cont");
             Assert.assertTrue(checkoutPage.getDeliveryAddressText().contains(account.getAddress()), "Adresa de livrare nu e cea din cont");
 
             checkoutPage.placeOrder(checkout.getComment());

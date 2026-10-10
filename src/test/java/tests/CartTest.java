@@ -28,7 +28,7 @@ public class CartTest extends ShareData {
 
         CartPage cartPage = new CartPage(getDriver());
         Assert.assertEquals(cartPage.getNumberOfProducts(), 1, "In cos trebuia sa fie un singur produs");
-        Assert.assertEquals(cartPage.getProductName(0), expectedName);
-        Assert.assertEquals(cartPage.getProductPrice(0), expectedPrice);
+        Assert.assertEquals(cartPage.getProductName(0), expectedName, "In cos e alt produs decat cel adaugat");
+        Assert.assertEquals(cartPage.getProductPrice(0), expectedPrice, "Pretul din cos difera de cel din lista de produse");
     }
 }

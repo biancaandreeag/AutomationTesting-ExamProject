@@ -36,10 +36,10 @@ public class ProductsApiTest {
     @Test
     public void getAllProducts() throws Exception {
         Response response = RestAssured.given().get("/productsList");
-        Assert.assertEquals(response.getStatusCode(), 200);
+        Assert.assertEquals(response.getStatusCode(), 200, "Status HTTP neasteptat");
 
         ProductsResponse body = readBody(response);
-        Assert.assertEquals(body.getResponseCode(), 200);
+        Assert.assertEquals(body.getResponseCode(), 200, "responseCode din raspuns nu e 200");
         Assert.assertFalse(body.getProducts().isEmpty(), "Lista de produse e goala");
         Assert.assertTrue(body.containsProduct("Blue Top"), "Lipseste produsul Blue Top");
         LoggerUtility.infoTest("Products list returned " + body.getProducts().size() + " products");
@@ -50,10 +50,10 @@ public class ProductsApiTest {
         Response response = RestAssured.given()
                 .formParam("search_product", "jeans")
                 .post("/searchProduct");
-        Assert.assertEquals(response.getStatusCode(), 200);
+        Assert.assertEquals(response.getStatusCode(), 200, "Status HTTP neasteptat");
 
         ProductsResponse body = readBody(response);
-        Assert.assertEquals(body.getResponseCode(), 200);
+        Assert.assertEquals(body.getResponseCode(), 200, "responseCode din raspuns nu e 200");
         Assert.assertTrue(body.containsProduct("Soft Stretch Jeans"), "Lipseste Soft Stretch Jeans din cautare");
         LoggerUtility.infoTest("Search for jeans returned " + body.getProducts().size() + " products");
     }
