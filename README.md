@@ -9,7 +9,7 @@ Proiectul final pentru cursul de Testare Automată: teste automate pe site-ul
 |---|---|
 | `LoginTest` | login cu date greșite → mesajul de eroare (negativ) |
 | `SignupNegativeTest` | înregistrare cu un email existent și cu un email invalid (negative) |
-| `SearchTest` | căutarea de produse, date din XML (mai multe seturi) |
+| `SearchTest` | căutarea de produse; data-driven: rulează o dată pentru fiecare set din `searchData.xml` (`@DataProvider`) |
 | `CartTest` | adaug un produs în coș → mesajul de confirmare → produsul, numele și prețul din coș |
 | `AccountTest` | creez un cont nou → îl salvez și îl verific în MySQL → îl șterg de pe site |
 | `ContactUsTest` | formularul Contact Us cu fișier atașat → alerta de confirmare → mesajul de succes |
@@ -30,11 +30,14 @@ MySQL (JDBC), REST Assured + Jackson, GitHub Actions.
 | `sharedData` | `ShareData`: deschide și închide browserul pentru fiecare test, screenshot la eșec |
 | `sharedData/browser` | `BrowserFactory` alege Chrome sau Edge; setările fiecărui browser |
 | `objectData` + `xmlReader` | datele de test din `src/test/resources/*.xml`, încărcate în obiecte |
-| `configUtility`, `database`, `queries` | configurarea și conexiunea la MySQL, query-urile pe tabela `users` |
+| `configUtility` | adresele site-ului (`SiteUrls`) și citirea configurării bazei de date |
+| `database`, `queries` | conexiunea la MySQL (Singleton) și query-urile pe tabela `users` (PreparedStatement) |
 | `apiObjects` | obiectele în care se transformă răspunsurile API |
 | `apiRequests` | conturi create și șterse prin API, ca date de pregătire pentru teste |
 | `logger` | `LoggerUtility`: un log pentru fiecare test + `AllTests.log` |
 | `tests`, `tests/api` | testele |
+
+Suitele TestNG sunt în `suites/`, datele de test și configurările în `src/test/resources/`.
 
 ## Cum se rulează
 
